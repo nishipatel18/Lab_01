@@ -4,21 +4,14 @@ on:
   push:
     branches:
       - main
-      - 'releases/**'
-    branches-ignore:
-      - dev
-
-  label:
-    types:
-      - created
-  issues:
-    types:
-      - opened
-      - labeled
+      - 'releases/**' # This triggers on main and releases branches only
+  # You can also add workflow_dispatch to allow manual runs
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
