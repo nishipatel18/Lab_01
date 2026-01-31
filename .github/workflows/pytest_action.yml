@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'releases/**' # This triggers on main and releases branches only
-  # You can also add workflow_dispatch to allow manual runs
+      - 'releases/**'
   workflow_dispatch:
 
 jobs:
@@ -30,7 +29,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: pytest-report.xml
